@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: test-nginx
+  labels:
+    name: nginx-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: ayakube.ayane0857.net
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: nginx-service
+                port:
+                  number: 80
