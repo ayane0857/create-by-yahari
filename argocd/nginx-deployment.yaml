@@ -17,18 +17,15 @@ spec:
       labels:
         app: nginx-deployment
     spec:
+      volumes:
+        - name: nginx-data-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
       containers:
         - name: nginx
           image: nginx:1.29.4
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: nginx-data-storage
-              mountPath: /usr/share/nginx/html
-          volumes:
-            - name: nginx-data-storage
-              persistentVolumeClaim:
-                claimName: nginx-pvc
           resources:
             limits:
               memory: "128Mi"
@@ -36,3 +33,6 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "250m"
+          volumeMounts:
+            - name: nginx-data-storage
+              mountPath: /usr/share/nginx/html
