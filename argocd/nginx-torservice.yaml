@@ -10,7 +10,7 @@ spec:
         number: 80
       backend:
         service:
-          name: nginx-deployment
+          name: nginx-service
           port:
             number: 80
   privateKeySecret:
