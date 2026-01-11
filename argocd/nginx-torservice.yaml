@@ -14,5 +14,4 @@ spec:
           port:
             number: 80
   privateKeySecret:
-    name: my-full-onion-secret
-    key: privateKeyFile
+    name: ayane-site
